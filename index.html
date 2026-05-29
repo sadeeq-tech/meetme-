@@ -1,108 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<title>MEETME Social Network</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    font-family:Arial, sans-serif;
-    background:#f0f2f5;
-}
-
-header{
-    background:#1877f2;
-    color:white;
-    padding:15px;
-    text-align:center;
-    font-size:28px;
-    font-weight:bold;
-}
-
-.container{
-    width:350px;
-    margin:50px auto;
-    background:white;
-    padding:25px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
-}
-
-h2{
-    text-align:center;
-    margin-bottom:20px;
-    color:#1877f2;
-}
-
-input{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border:1px solid #ccc;
-    border-radius:5px;
-    font-size:16px;
-}
-
-button{
-    width:100%;
-    padding:12px;
-    background:#1877f2;
-    color:white;
-    border:none;
-    border-radius:5px;
-    font-size:16px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#145dbf;
-}
-
-p{
-    text-align:center;
-    margin-top:15px;
-}
-
-a{
-    color:#1877f2;
-    cursor:pointer;
-    text-decoration:none;
-}
-
-.hidden{
-    display:none;
-}
-
-.dashboard{
-    text-align:center;
-}
-
-.user-box{
-    background:#f5f5f5;
-    padding:15px;
-    border-radius:10px;
-    margin-top:20px;
-}
-
-.logout-btn{
-    background:red;
-    margin-top:20px;
-}
-
-.logout-btn:hover{
-    background:darkred;
-}
-
-</style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="MEETME - Social Network Platform">
+    
+    <title>MEETME Social Network</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -113,214 +20,82 @@ a{
 
 <div class="container">
 
-    <!-- CREATE ACCOUNT -->
-
+    <!-- SIGNUP PAGE -->
     <div id="signupPage">
-
         <h2>Create Account</h2>
 
-        <input type="text"
-               id="signupName"
-               placeholder="Full Name">
+        <form id="signupForm" onsubmit="return false;">
+            <input type="text"
+                   id="signupName"
+                   placeholder="Full Name"
+                   required>
 
-        <input type="email"
-               id="signupEmail"
-               placeholder="Email Address">
+            <input type="email"
+                   id="signupEmail"
+                   placeholder="Email Address"
+                   required>
 
-        <input type="password"
-               id="signupPassword"
-               placeholder="Password">
+            <input type="password"
+                   id="signupPassword"
+                   placeholder="Password (min 6 characters)"
+                   required>
 
-        <button onclick="signup()">
-            Create Account
-        </button>
+            <button type="button" onclick="signup()">
+                Create Account
+            </button>
+        </form>
 
         <p>
             Already have an account?
             <a onclick="showLogin()">Login</a>
         </p>
-
     </div>
 
-    <!-- LOGIN -->
-
+    <!-- LOGIN PAGE -->
     <div id="loginPage" class="hidden">
-
         <h2>Login</h2>
 
-        <input type="email"
-               id="loginEmail"
-               placeholder="Email Address">
+        <form id="loginForm" onsubmit="return false;">
+            <input type="email"
+                   id="loginEmail"
+                   placeholder="Email Address"
+                   required>
 
-        <input type="password"
-               id="loginPassword"
-               placeholder="Password">
+            <input type="password"
+                   id="loginPassword"
+                   placeholder="Password"
+                   required>
 
-        <button onclick="login()">
-            Login
-        </button>
+            <button type="button" onclick="login()">
+                Login
+            </button>
+        </form>
 
         <p>
             Don't have an account?
             <a onclick="showSignup()">Create Account</a>
         </p>
-
     </div>
 
-    <!-- DASHBOARD -->
-
-    <div id="dashboard"
-         class="hidden dashboard">
-
+    <!-- DASHBOARD PAGE -->
+    <div id="dashboard" class="hidden dashboard">
         <h2>Welcome To MEETME</h2>
 
         <div class="user-box">
-
             <h3 id="welcomeUser"></h3>
-
+            <p id="userEmail"></p>
             <p>You are successfully logged in.</p>
-
         </div>
 
-        <button class="logout-btn"
-                onclick="logout()">
+        <button class="logout-btn" onclick="logout()">
             Logout
         </button>
-
     </div>
 
 </div>
 
-<script>
-
-//////////////////////////////////////////////////
-// SHOW LOGIN
-//////////////////////////////////////////////////
-
-function showLogin(){
-
-    document
-    .getElementById("signupPage")
-    .classList.add("hidden");
-
-    document
-    .getElementById("loginPage")
-    .classList.remove("hidden");
-}
-
-//////////////////////////////////////////////////
-// SHOW SIGNUP
-//////////////////////////////////////////////////
-
-function showSignup(){
-
-    document
-    .getElementById("loginPage")
-    .classList.add("hidden");
-
-    document
-    .getElementById("signupPage")
-    .classList.remove("hidden");
-}
-
-//////////////////////////////////////////////////
-// CREATE ACCOUNT
-//////////////////////////////////////////////////
-
-function signup(){
-
-    let name =
-    document.getElementById("signupName").value;
-
-    let email =
-    document.getElementById("signupEmail").value;
-
-    let password =
-    document.getElementById("signupPassword").value;
-
-    if(name === "" ||
-       email === "" ||
-       password === ""){
-
-        alert("Please fill all fields");
-        return;
-    }
-
-    let user = {
-
-        name:name,
-        email:email,
-        password:password
-    };
-
-    localStorage.setItem(
-        "meetmeUser",
-        JSON.stringify(user)
-    );
-
-    alert("Account Created Successfully!");
-
-    showLogin();
-}
-
-//////////////////////////////////////////////////
-// LOGIN
-//////////////////////////////////////////////////
-
-function login(){
-
-    let email =
-    document.getElementById("loginEmail").value;
-
-    let password =
-    document.getElementById("loginPassword").value;
-
-    let savedUser =
-    JSON.parse(
-        localStorage.getItem("meetmeUser")
-    );
-
-    if(savedUser &&
-       savedUser.email === email &&
-       savedUser.password === password){
-
-        document
-        .getElementById("loginPage")
-        .classList.add("hidden");
-
-        document
-        .getElementById("dashboard")
-        .classList.remove("hidden");
-
-        document
-        .getElementById("welcomeUser")
-        .innerHTML =
-        "Hello, " + savedUser.name;
-
-    }else{
-
-        alert("Invalid Email or Password");
-    }
-}
-
-//////////////////////////////////////////////////
-// LOGOUT
-//////////////////////////////////////////////////
-
-function logout(){
-
-    document
-    .getElementById("dashboard")
-    .classList.add("hidden");
-
-    document
-    .getElementById("loginPage")
-    .classList.remove("hidden");
-
-    alert("Logged Out Successfully");
-}
-
-</script>
+<!-- External JavaScript -->
+<script src="js/app.js"></script>
 
 </body>
 </html>
