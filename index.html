@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="MEETME - Social Network Platform">
+    <meta name="description" content="MEETME - Social Network Platform with Posts and Feed">
     
     <title>MEETME Social Network</title>
     
@@ -20,76 +20,59 @@
 
 <div class="container">
 
-    <!-- SIGNUP PAGE -->
-    <div id="signupPage">
-        <h2>Create Account</h2>
-
-        <form id="signupForm" onsubmit="return false;">
+    <!-- AUTHENTICATION SECTION -->
+    <div id="authSection" class="card">
+        <h2>Create Account or Login</h2>
+        <p style="color: #666; margin-bottom: 15px;">Join MEETME and connect with friends!</p>
+        
+        <form id="authForm" onsubmit="return false;">
             <input type="text"
-                   id="signupName"
-                   placeholder="Full Name"
+                   id="username"
+                   placeholder="Username"
                    required>
 
-            <input type="email"
-                   id="signupEmail"
-                   placeholder="Email Address"
+            <input type="text"
+                   id="contact"
+                   placeholder="Phone Number or Email"
                    required>
 
             <input type="password"
-                   id="signupPassword"
+                   id="password"
                    placeholder="Password (min 6 characters)"
                    required>
 
-            <button type="button" onclick="signup()">
-                Create Account
-            </button>
+            <div style="margin-top: 15px;">
+                <button type="button" onclick="signup()">
+                    📝 Sign Up
+                </button>
+                <button type="button" onclick="login()" style="margin-left: 10px;">
+                    🔓 Login
+                </button>
+            </div>
         </form>
-
-        <p>
-            Already have an account?
-            <a onclick="showLogin()">Login</a>
-        </p>
     </div>
 
-    <!-- LOGIN PAGE -->
-    <div id="loginPage" class="hidden">
-        <h2>Login</h2>
-
-        <form id="loginForm" onsubmit="return false;">
-            <input type="email"
-                   id="loginEmail"
-                   placeholder="Email Address"
-                   required>
-
-            <input type="password"
-                   id="loginPassword"
-                   placeholder="Password"
-                   required>
-
-            <button type="button" onclick="login()">
-                Login
-            </button>
-        </form>
-
-        <p>
-            Don't have an account?
-            <a onclick="showSignup()">Create Account</a>
-        </p>
-    </div>
-
-    <!-- DASHBOARD PAGE -->
-    <div id="dashboard" class="hidden dashboard">
-        <h2>Welcome To MEETME</h2>
-
-        <div class="user-box">
-            <h3 id="welcomeUser"></h3>
-            <p id="userEmail"></p>
-            <p>You are successfully logged in.</p>
+    <!-- FEED SECTION -->
+    <div id="feedSection" class="hidden">
+        
+        <!-- Top Bar with Logout -->
+        <div class="top-bar">
+            <h2>Welcome to MEETME 👋</h2>
+            <button class="logout-btn" onclick="logout()">🚪 Logout</button>
         </div>
 
-        <button class="logout-btn" onclick="logout()">
-            Logout
-        </button>
+        <!-- Create Post Card -->
+        <div class="card">
+            <h3>📝 Create Post</h3>
+            <textarea id="postInput" 
+                      rows="4" 
+                      placeholder="What's on your mind? Share your thoughts!"></textarea>
+            <button onclick="createPost()">📤 Post</button>
+        </div>
+
+        <!-- Posts Feed -->
+        <div id="posts"></div>
+
     </div>
 
 </div>

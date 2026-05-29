@@ -1,0 +1,248 @@
+/* ================================================
+   MEETME Social Network - Styles
+   ================================================ */
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f3f4f6;
+}
+
+/* ================================================
+   Header
+   ================================================ */
+
+header {
+    background: linear-gradient(135deg, #1877f2 0%, #0a66c2 100%);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    letter-spacing: 2px;
+}
+
+/* ================================================
+   Container
+   ================================================ */
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* ================================================
+   Cards
+   ================================================ */
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ================================================
+   Form Inputs
+   ================================================ */
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #1877f2;
+    box-shadow: 0 0 8px rgba(24, 119, 242, 0.2);
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* ================================================
+   Buttons
+   ================================================ */
+
+button {
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #1877f2 0%, #0a66c2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #0a66c2 0%, #063d8a 100%);
+    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ================================================
+   Post Styles
+   ================================================ */
+
+.post {
+    margin-top: 15px;
+    padding: 15px;
+    background: #fafafa;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.post:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.post h3 {
+    margin-bottom: 8px;
+    color: #1877f2;
+}
+
+.post p {
+    color: #333;
+    line-height: 1.6;
+}
+
+.post-meta {
+    font-size: 12px;
+    color: #999;
+    margin-top: 10px;
+}
+
+/* ================================================
+   Utility Classes
+   ================================================ */
+
+.hidden {
+    display: none !important;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.top-bar h2 {
+    color: #1877f2;
+}
+
+/* ================================================
+   Logout Button
+   ================================================ */
+
+.logout-btn {
+    background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+    margin: 0;
+}
+
+.logout-btn:hover {
+    background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
+}
+
+/* ================================================
+   Headings
+   ================================================ */
+
+h2 {
+    color: #1877f2;
+    margin-bottom: 15px;
+}
+
+h3 {
+    color: #1877f2;
+    margin-bottom: 10px;
+}
+
+/* ================================================
+   Responsive Design
+   ================================================ */
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 95%;
+        margin: 10px auto;
+        padding: 15px;
+    }
+
+    header {
+        font-size: 24px;
+        padding: 15px;
+    }
+
+    .card {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .top-bar h2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 20px;
+        padding: 12px;
+    }
+
+    .card {
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+
+    input, textarea {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
